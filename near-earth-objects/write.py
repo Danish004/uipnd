@@ -26,9 +26,17 @@ def write_to_csv(results, filename):
     :param results: An iterable of `CloseApproach` objects.
     :param filename: A Path-like object pointing to where the data should be saved.
     """
-    fieldnames = ('datetime_utc', 'distance_au', 'velocity_km_s', 'designation', 'name', 'diameter_km', 'potentially_hazardous')
+    fieldnames = (
+        "datetime_utc",
+        "distance_au",
+        "velocity_km_s",
+        "designation",
+        "name",
+        "diameter_km",
+        "potentially_hazardous",
+    )
     # TODO: Write the results to a CSV file, following the specification in the instructions.
-    with open(filename, 'w', newline='') as f:
+    with open(filename, "w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         for r in results:
@@ -36,6 +44,7 @@ def write_to_csv(results, filename):
             info["name"] = info["name"] if info["name"] is not None else ""
             info["potentially_hazardous"] = "True" if info["potentially_hazardous"] else "False"
             writer.writerow(info)
+
 
 def write_to_json(results, filename):
     """Write an iterable of `CloseApproach` objects to a JSON file.
@@ -54,18 +63,19 @@ def write_to_json(results, filename):
         info = r.serialize() | r.neo.serialize()
         info["name"] = info["name"] if info["name"] is not None else ""
         info["potentially_hazardous"] = bool(1) if info["potentially_hazardous"] else bool(0)
-        print(info["diameter_km"])
-        data.append({
-            "datetime_utc": info["datetime_utc"],
-            "distance_au": info["distance_au"],
-            "velocity_km_s": info["velocity_km_s"],
-            "neo": {
-                "designation": info["designation"],
-                "name": info["name"],
-                "diameter_km": info["diameter_km"],
-                "potentially_hazardous": info["potentially_hazardous"]
+        data.append(
+            {
+                "datetime_utc": info["datetime_utc"],
+                "distance_au": info["distance_au"],
+                "velocity_km_s": info["velocity_km_s"],
+                "neo": {
+                    "designation": info["designation"],
+                    "name": info["name"],
+                    "diameter_km": info["diameter_km"],
+                    "potentially_hazardous": info["potentially_hazardous"],
+                },
             }
-        })
+        )
 
-    with open(filename, 'w') as f:
+    with open(filename, "w") as f:
         json.dump(data, f, indent="\t")
