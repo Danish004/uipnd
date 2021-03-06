@@ -24,7 +24,6 @@ def load_neos(neo_csv_path):
     :param neo_csv_path: A path to a CSV file containing data about near-Earth objects.
     :return: A collection of `NearEarthObject`s.
     """
-    # TODO: Load NEO data from the given CSV file.
     with open(neo_csv_path, "r") as f:
         reader = csv.DictReader(f)
 
@@ -39,13 +38,16 @@ def load_neos(neo_csv_path):
             if not line["name"]:
                 line["name"] = None
 
-            line["pha"] = False if line["pha"] in ['N', ''] else True
+            line["pha"] = False if line["pha"] in ["N", ""] else True
 
             try:
                 neo = NearEarthObject(
-                    pdes=line["pdes"], name=line["name"], diameter=line["diameter"], pha=line["pha"]
-                    )
-                
+                    pdes=line["pdes"],
+                    name=line["name"],
+                    diameter=line["diameter"],
+                    pha=line["pha"],
+                )
+
             except Exception as e:
                 print(e)
                 continue
@@ -61,7 +63,6 @@ def load_approaches(cad_json_path):
     :param neo_csv_path: A path to a JSON file containing data about close approaches.
     :return: A collection of `CloseApproach`es.
     """
-    # TODO: Load close approach data from the given JSON file.
     with open(cad_json_path, "r") as f:
         reader = json.load(f)
         reader = [dict(zip(reader["fields"], data)) for data in reader["data"]]
@@ -69,7 +70,12 @@ def load_approaches(cad_json_path):
         close_approaches = []
         for line in reader:
             try:
-                ca = CloseApproach(des=line["des"], cd=line["cd"], dist=float(line["dist"]), v_rel=float(line["v_rel"]))
+                ca = CloseApproach(
+                    des=line["des"],
+                    cd=line["cd"],
+                    dist=float(line["dist"]),
+                    v_rel=float(line["v_rel"]),
+                )
             except Exception as e:
                 print(e)
                 continue
