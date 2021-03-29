@@ -1,2 +1,6 @@
 *.pyc
 *.jpg
+*launch.json
+*settings.json
+src/tmp/
+
