@@ -1,6 +1,6 @@
 *.pyc
 *.jpg
-*launch.json
-*settings.json
+.vscode/launch.json
+.vscode/settings.json
 src/tmp/
 
