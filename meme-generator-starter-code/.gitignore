@@ -2,3 +2,5 @@
 *.jpg
 **/.vscode/
 src/tmp/
+.vscode/
+src/.vscode/

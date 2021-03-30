@@ -38,7 +38,7 @@ Contains the main class `QuoteModel` that represents a single quote and holds th
 
 #### ingestor_interface.py
 
-Contains the main base class that further classes inherit from to serve a certain functionality based on the type of data that is to be parsed. These are the following:
+Contains the main base class that further classes inherit from, to serve a certain functionality based on the type of data that is to be parsed. These are the following:
 
 - `CSVIngestor` that can be found in `csv_ingestor.py`.
 - `DocxIngestor` that can be found in `docx_ingestor.py`.
@@ -84,7 +84,7 @@ mg.make_meme(
 
 ## Flask app
 
-The Flask app consists of only 2 components:
+The Flask app consists of 2 components:
 
 - meme.py
 - app.py
