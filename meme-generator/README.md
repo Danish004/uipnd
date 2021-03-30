@@ -19,6 +19,8 @@ You also need to install `pdftotext` from here:
 - Debian: `sudo apt-get update && sudo apt-get install -y xpdf`
 - macOS: `brew install --cask pdftotext`
 
+For checking each function's argument type and providing assertions if needed, [beartype](https://pypi.org/project/beartype/) is used.
+
 ## Run
 
 To start the app navigate to `/src` and run `python3 app.py`. The frontend can be accessed at: http://127.0.0.1:5000/.
