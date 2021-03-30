@@ -1,11 +1,11 @@
 # Meme Generator
 
+![](memes.gif)
+
 An app that generates memes. Memes can either be created randomly (by randomly picking an image and a quote from a predefined data pool) or by user input (quote & image url).
 
 This app was built with the [Flask](https://palletsprojects.com/p/flask/)
 web application framework.
-
-![](memes.gif)
 
 ## Setup
 
