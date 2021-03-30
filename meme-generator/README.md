@@ -9,9 +9,7 @@ web application framework.
 
 ## Setup
 
-In the root directory run the following command: `source venv/bin/activate` to activate the virtual environment that also includes all project dependencies. Run `deactivate` to deactivate the virtual environment.
-
-You can also create a virtual environment on your own, either with venv or with conda (it should work with `Python 3.8.5`). With that environment activated, navigate to the root directory and run `pip install -r requirements.txt`.
+On your venv with a `Python 3.8.5` installation, navigate to the root directory and run `pip install -r requirements.txt`.
 
 You also need to install `pdftotext` from here:
 
