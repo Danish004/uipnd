@@ -39,8 +39,9 @@ class MemeEngine:
         ratio = img.size[1] / img.size[0]  # height / width
         new_width = width
         new_height = int(new_width * ratio)
+        img = img.resize((new_width, new_height), Image.ANTIALIAS)
 
-        return img.resize((new_width, new_height), Image.ANTIALIAS)
+        return img
 
     @beartype
     def _add_caption(self, img, text: str, author: str):

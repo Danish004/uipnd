@@ -5,11 +5,13 @@ An app that generates memes. Memes can either be created randomly (by randomly p
 This app was built with the [Flask](https://palletsprojects.com/p/flask/)
 web application framework.
 
+![](memes.gif)
+
 ## Setup
 
 In the root directory run the following command: `source venv/bin/activate` to activate the virtual environment that also includes all project dependencies. Run `deactivate` to deactivate the virtual environment.
 
-You can also create a virtual environment on your own, either with venv or with conda. With that environment activated, navigate to the root directory and run `pip install -r requirements.txt`.
+You can also create a virtual environment on your own, either with venv or with conda (it should work with `Python 3.8.5`). With that environment activated, navigate to the root directory and run `pip install -r requirements.txt`.
 
 You also need to install `pdftotext` from here:
 
