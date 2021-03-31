@@ -2,6 +2,7 @@ from PIL import Image, ImageDraw, ImageFont
 import os
 import random
 from beartype import beartype
+import textwrap
 
 
 class MemeEngine:
@@ -52,20 +53,21 @@ class MemeEngine:
             author (str): Author of meme.
         """
 
-        # fit text to image
-        fontsize = 1
-        img_fraction = 0.5
-        fnt = ImageFont.truetype("Pillow/Tests/fonts/FreeMono.ttf", fontsize)
-        while fnt.getsize(text)[0] < img_fraction * img.size[0]:
-            # iterate until the text size is just larger than the criteria
-            fontsize += 1
-            fnt = ImageFont.truetype(
-                "Pillow/Tests/fonts/FreeMono.ttf", fontsize
-            )
+        draw = ImageDraw.Draw(img)
+        font = ImageFont.truetype("arial.ttf", 40)
+        _, img_width = img.size
 
-        # draw text
-        d = ImageDraw.Draw((img))
-        d.text((0, 0), f"{text} - {author}", font=fnt, fill=(0, 0, 0, 0))
+        lines = textwrap.wrap(text, width=20)
+        y_text = 0
+        for line in lines:
+            line_width, line_height = font.getsize(line)
+            draw.text(
+                ((img_width - line_width) / 2, y_text),
+                line,
+                font=font,
+                fill=(0, 0, 0),
+            )
+            y_text += line_height
 
         return img
 
