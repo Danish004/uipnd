@@ -1,6 +1,5 @@
 **/venv/
 *.pyc
-*.jpg
 **/.vscode/
 src/tmp/
 .vscode/
