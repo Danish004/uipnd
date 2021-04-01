@@ -3,6 +3,7 @@ import os
 import random
 from beartype import beartype
 import textwrap
+import pathlib
 
 
 class MemeEngine:
@@ -54,7 +55,10 @@ class MemeEngine:
         """
 
         draw = ImageDraw.Draw(img)
-        font = ImageFont.truetype("fonts/arial.ttf", 40, encoding="unic")
+        font_path = (
+            pathlib.Path(__file__).parent.parent.absolute() / "fonts/arial.ttf"
+        )
+        font = ImageFont.truetype(str(font_path), 40, encoding="unic")
         img_width, _ = img.size
 
         if text and author:
