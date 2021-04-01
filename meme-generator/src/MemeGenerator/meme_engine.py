@@ -55,7 +55,7 @@ class MemeEngine:
 
         draw = ImageDraw.Draw(img)
         font = ImageFont.truetype("arial.ttf", 40)
-        _, img_width = img.size
+        img_width, _ = img.size
 
         if text and author:
             lines = textwrap.wrap(f"{text} - {author}", width=20)
@@ -88,10 +88,9 @@ class MemeEngine:
             str: Path of saved meme.
         """
 
-        assert text not in ["", None] and author not in [
-            "",
-            None,
-        ], "You need a text and an author to make a meme!"
+        assert (
+            text is not None and author is not None
+        ), "You need a text and an author to make a meme!"
 
         img = self._load_image(img_path)
         img = self._resize(img, width)

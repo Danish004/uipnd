@@ -108,6 +108,7 @@ def meme_post():
     quote = QuoteModel(body, author)  # it's not really needed
 
     try:
+        print(quote)
         path = meme.make_meme(img_path, quote.body, quote.author)
     except:
         flash("Please enter a Quote Body and Quote Author!")
