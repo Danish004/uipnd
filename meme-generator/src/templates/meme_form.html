@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block title %}Meme Generator{% endblock %}
 {% block body %}
+{% for mesg in get_flashed_messages() %}
+    <h1>{{ mesg }}</h1>
+{% endfor %}
 <div class="card" style="width: 500px; max-width: 100%;">
     <div class="card-body">
         <form action="{{url_for('meme_post')}}" method="POST">
