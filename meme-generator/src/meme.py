@@ -3,12 +3,15 @@ import random
 import argparse
 from QuoteEngine import QuoteModel, Ingestor
 from MemeGenerator import MemeEngine
+from typing import Union
 from beartype import beartype
 
 
 @beartype
 def generate_meme(
-    path: str = None, body: str = None, author: str = None
+    path: Union[str, None],
+    body: Union[str, None],
+    author: Union[str, None],
 ) -> str:
     """ Generate a meme given an path and a quote """
     img = None
