@@ -25,7 +25,7 @@ class TxtIngestor(IngestorInterface):
 
         quotes = []
 
-        with open(path, "r") as f:
+        with open(path, "r", encoding="utf-8-sig") as f:
             for line in f.readlines():
                 line = line.strip("\n\r").strip()
                 if len(line) > 0:
