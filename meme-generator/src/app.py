@@ -73,7 +73,7 @@ quotes, imgs = setup()
 
 @app.route("/")
 def meme_rand():
-    """ Generate a random meme """
+    """Generate a random meme."""
     img = random.choice(imgs)
     quote = random.choice(quotes)
     path = meme.make_meme(img, quote.body, quote.author)
@@ -83,13 +83,13 @@ def meme_rand():
 
 @app.route("/create", methods=["GET"])
 def meme_form():
-    """ User input for meme information """
+    """User input for meme information."""
     return render_template("meme_form.html")
 
 
 @app.route("/create", methods=["POST"])
 def meme_post():
-    """ Create a user defined meme """
+    """Create a user defined meme."""
     img_url = request.form.get("image_url")
     try:
         response = requests.get(img_url, stream=True)
@@ -105,10 +105,16 @@ def meme_post():
     if body:
         body = f"'{body}'"
     author = request.form.get("author", "")
-
     quote = QuoteModel(body, author)  # it's not really needed
 
-    path = meme.make_meme(img_path, quote.body, quote.author)
+    try:
+        path = meme.make_meme(img_path, quote.body, quote.author)
+    except:
+        flash("Please enter a Quote Body and Quote Author!")
+        if os.path.exists(img_path):
+            os.remove(img_path)
+        return redirect(url_for("meme_form"))
+
     if os.path.exists(img_path):
         os.remove(img_path)
 
