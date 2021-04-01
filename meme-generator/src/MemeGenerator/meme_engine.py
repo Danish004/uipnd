@@ -54,7 +54,7 @@ class MemeEngine:
         """
 
         draw = ImageDraw.Draw(img)
-        font = ImageFont.truetype("arial.ttf", 40)
+        font = ImageFont.truetype("fonts/arial.ttf", 40, encoding="unic")
         img_width, _ = img.size
 
         if text and author:
