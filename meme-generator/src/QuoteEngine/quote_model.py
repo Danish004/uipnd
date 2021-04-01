@@ -15,6 +15,14 @@ class QuoteModel:
         """Prints the quote.
 
         Returns:
-            [str]: The quote.
+            str: The quote.
         """
         return f"{self.body} - {self.author}"
+
+    def __repr__(self):
+        """Representation of the QuoteModel instance in a more readable format.
+
+        Returns:
+            str: QuoteModel instance representation.
+        """
+        return f"QuoteModel(body={self.body}, author={self.author})"
