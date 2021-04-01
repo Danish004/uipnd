@@ -57,7 +57,7 @@ class MemeEngine:
         font = ImageFont.truetype("arial.ttf", 40)
         _, img_width = img.size
 
-        lines = textwrap.wrap(text, width=20)
+        lines = textwrap.wrap(f"{text} - {author}", width=20)
         y_text = 0
         for line in lines:
             line_width, line_height = font.getsize(line)
